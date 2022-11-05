@@ -4,6 +4,8 @@ var timing;
 var time;
 var startpiece;
 var maxtime=0;
+var number=0;
+var repeat;
 
 function mouseOver(){
     document.getElementById("Start").style.color='red';
@@ -48,7 +50,7 @@ document.onkeyup=function onkeyup() {
     if (ev.keyCode === 32&&document.getElementById("StartFrame").style.display==="none") {
         if(flag===0) {
             gamestart();
-            setInterval(gamestart,1000);
+            repeat=setInterval(gamestart,1000);
         }
         if(flag===0){
             time=0;
@@ -80,6 +82,9 @@ function gamestart(){
             elem[i].style.top = pos + "px";
         }
     }
+    number++;
+    if(number>16)
+        clearInterval(repeat);
 }
 
 
@@ -93,6 +98,7 @@ function Gameover(){
     flag=1;
     if(time>maxtime)
         maxtime=time;
+    number=0;
 }
 
 function qClick(id){
