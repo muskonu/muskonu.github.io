@@ -3,6 +3,7 @@ var flag=0;
 var timing;
 var time;
 var startpiece;
+var maxtime=0;
 
 function mouseOver(){
     document.getElementById("Start").style.color='red';
@@ -45,12 +46,13 @@ function numbery(x){
 document.onkeyup=function onkeyup() {
     var ev = ev || event;
     if (ev.keyCode === 32&&document.getElementById("StartFrame").style.display==="none") {
-        if(flag<3) {
+        if(flag===0) {
             gamestart();
+            setInterval(gamestart,1000);
         }
         if(flag===0){
             time=0;
-            timing=setInterval(function (){document.getElementById("time").innerHTML=time.toFixed(3)+"秒";time=time+0.004;}, 1);
+            timing=setInterval(function (){document.getElementById("time").innerHTML=time.toFixed(3)+"秒"+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+"你的最高纪录为:"+maxtime.toFixed(3)+"秒";time=time+0.004;}, 1);
         }
         startpiece.innerHTML="";
         flag++;
@@ -60,7 +62,7 @@ document.onkeyup=function onkeyup() {
 
 function gamestart(){
     let elem = document.getElementsByClassName("pieces");
-    moving[flag]=setInterval(move, 1);
+    moving[flag]=setInterval(move, 20);
     function move() {
         judgeover();
         for (let i = 0; i < 20; i++) {
@@ -82,12 +84,15 @@ function gamestart(){
 
 
 function Gameover(){
-    for(let i=0;i<3;i++)
-        clearInterval(moving[i]);
+    for (let i = 1; i < 100; i++) {
+        clearInterval(i);
+    }
     clearInterval(timing);
     setTimeout(function (){document.getElementById("over").style.display="block";document.getElementById("enterGameFrame").style.display='none';},1000);
     document.getElementById("timer").innerHTML="你的成绩为:"+time.toFixed(3)+"秒";
-    flag=0;
+    flag=1;
+    if(time>maxtime)
+        maxtime=time;
 }
 
 function qClick(id){
@@ -136,5 +141,5 @@ function reStart(){
     Initp();
     document.getElementById("over").style.display="none";
     document.getElementById("enterGameFrame").style.display='block';
+    flag=0;
 }
-
