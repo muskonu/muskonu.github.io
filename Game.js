@@ -102,11 +102,13 @@ function Gameover(){
 }
 
 function qClick(id){
-    if(id.style.backgroundColor==="black")
-        id.style.backgroundColor='grey';
-    else{
-        id.style.backgroundColor='red';
-        Gameover();
+    if(flag!==0) {
+        if (id.style.backgroundColor === "black")
+            id.style.backgroundColor = 'grey';
+        else {
+            id.style.backgroundColor = 'red';
+            Gameover();
+        }
     }
 }
 
