@@ -83,7 +83,7 @@ function gamestart(){
         }
     }
     number++;
-    if(number>16)
+    if(number>15)
         clearInterval(repeat);
 }
 
