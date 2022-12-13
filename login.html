@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>登录界面</title>
+  <style>
+    html,body{
+      height: 100%;
+    }
+    body{
+      background: #87CEFA;
+    }
+    h1{
+      color: #FFF;
+      text-align: center;
+    }
+    .container{
+      margin: 100px auto;
+      width: 30%;
+    }
+    form{
+      background: #FFF;
+      height: 300px;
+      width: 100%;
+      border-radius: 10px;
+      position: relative;
+    }
+    label{
+      color: #000;
+      font-weight: bold;
+      font-size: 20px;
+      margin-left: 40px;
+    }
+    input{
+      text-align: left;
+      margin: 10px;
+    }
+    .input{
+      width: 80%;
+      height: 35px;
+      margin-left: 40px;
+    }
+    a{
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .submit{
+      display: inline-block;
+      margin-top: 0;
+      margin-left:145px;
+      background: #000;
+      border: none;
+      color: #FFF;
+      height: 35px;
+      width: 100px;
+      text-align: center;
+      font-weight: bold;
+      border-radius: 5px;
+    }
+    .right{
+      position: absolute;
+      right: 20px;
+    }
+  </style>
+</head>
+
+<body>
+<div class="container">
+  <h1>用户登录</h1>
+  <form action="/login" method="post" novalidate autocapitalize="off">
+    <br>
+    <label for="username">用户名</label><br>
+    <input type="text" name="admin" id="username" class="input" value="" placeholder="用户名" minlength="6" maxlength="15" required><br>
+    <label for="pwd">密码</label><br>
+    <input type="text" name="password" id="pwd" class="input" value="" placeholder="密码" minlength="6" maxlength="15" required>
+    <button type="submit" class="submit">开始登录</button>
+    <br>
+    <a href="register" class="right">注册账号</a>
+  </form>
+</div>
+</body>
+</html>
